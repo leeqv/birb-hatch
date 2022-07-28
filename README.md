@@ -2,6 +2,9 @@
 A simple game where you click the egg button 🥚 to help the bird ("birb") hatch 🐣, created with React.
 <img src="media/start-game.png" height="300">
 
+## Demo
+Working live demo: https://leeqv.github.io/birb-hatch/
+
 ## Features
 Hatch the egg 🥚 as fast as you can 🐣.
 
