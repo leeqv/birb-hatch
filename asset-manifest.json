@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/birb-hatch/static/css/main.95b9f14e.css",
+    "main.js": "/birb-hatch/static/js/main.d63326a5.js",
+    "static/js/787.0988e47c.chunk.js": "/birb-hatch/static/js/787.0988e47c.chunk.js",
+    "index.html": "/birb-hatch/index.html",
+    "main.95b9f14e.css.map": "/birb-hatch/static/css/main.95b9f14e.css.map",
+    "main.d63326a5.js.map": "/birb-hatch/static/js/main.d63326a5.js.map",
+    "787.0988e47c.chunk.js.map": "/birb-hatch/static/js/787.0988e47c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.95b9f14e.css",
+    "static/js/main.d63326a5.js"
+  ]
+}
