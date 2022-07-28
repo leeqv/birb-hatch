@@ -1,0 +1,71 @@
+button:hover {
+  cursor: pointer;
+}
+
+.App {
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.app-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10vh;
+}
+
+.app-header__description {
+  position: absolute;
+  top: -15px;
+}
+
+.app-header__title {
+  font-family: 'Mali', cursive;
+  font-size: calc(1.5rem + 1.7vw);
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.egg-btn {
+  font-size: 7rem;
+  margin-top: 2rem;
+}
+
+.egg-btn.chick-btn {
+  margin-top: 0.5rem;
+}
+
+.counter {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  font-family: 'Mali', cursive;
+}
+
+.timer {
+  margin-top: 3rem;
+}
+
+.reset-btn {
+  margin: 0.5rem 0 2rem;
+}
