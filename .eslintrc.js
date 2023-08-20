@@ -15,7 +15,6 @@ module.exports = {
   plugins: ["react", "prettier"],
   rules: {
     indent: ["error", 2],
-    "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
     semi: ["error", "always"],
     "no-trailing-spaces": "error",
@@ -23,7 +22,12 @@ module.exports = {
     "arrow-spacing": ["error", { before: true, after: true }],
     "react/prop-types": 0,
     "react/react-in-jsx-scope": "off",
-    "prettier/prettier": ["error"],
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
   },
   settings: {
     react: {
