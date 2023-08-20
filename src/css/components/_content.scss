@@ -1,0 +1,31 @@
+@use '../settings/font-family' as ff;
+@use '../tools/mixin' as mxn;
+
+.content {
+  flex-direction: column;
+  @include mxn.center;
+
+  &__egg-btn {
+    font-size: 7rem;
+    margin-top: 2rem;
+
+    &--fin {
+      margin-top: 0.5rem;
+      cursor: default;
+    }
+  }
+
+  &__counter {
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    font-family: ff.$mali;
+  }
+
+  &__timer {
+    margin-top: 3rem;
+  }
+  
+  &__reset-btn {
+    margin: 0.5rem 0 2rem;
+  }
+}

@@ -62,12 +62,15 @@ function Main() {
   /** TEMPLATES */
   const endGameTemplate = (
     <>
-      <span className="egg-btn chick-btn">🐣</span>
-      <p className="counter">
+      <span className="content__egg-btn content__egg-btn--fin">🐣</span>
+      <p className="content__counter">
         Good job! You helped birb hatch in {getTimeString(time)} 👏
       </p>
 
-      <button className="reset-btn btn btn-warning" onClick={handleResetBtn}>
+      <button
+        className="content__reset-btn btn btn-warning"
+        onClick={handleResetBtn}
+      >
         hatch another egg
       </button>
 
@@ -77,7 +80,7 @@ function Main() {
 
   const startedGameTemplate = (
     <>
-      <span className="counter">{count}</span>
+      <span className="content__counter">{count}</span>
       <span className="timer">time elapsed: {time}</span>
     </>
   );
@@ -86,7 +89,7 @@ function Main() {
     <>
       <button
         onClick={handleEggBtnClick}
-        className="egg-btn btn btn-outline-warning"
+        className="content__egg-btn btn btn-outline-warning"
       >
         🥚
       </button>
@@ -95,7 +98,7 @@ function Main() {
   );
 
   return (
-    <main className="app-main">
+    <main className="content">
       {count === pointsNeeded ? endGameTemplate : inGameTemplate}
     </main>
   );

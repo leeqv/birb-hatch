@@ -56,9 +56,6 @@ function RecordsTable(props) {
     ></RecordsRow>
   ));
 
-  //var recordsRows = <tr>Hello</tr>
-  //localStorage.clear();
-
   return (
     <table>
       <thead>

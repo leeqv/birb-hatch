@@ -1,0 +1,6 @@
+@use '../settings/font-family' as ff;
+
+body {
+  margin: 0;
+  font-family: ff.$nunito;
+}
