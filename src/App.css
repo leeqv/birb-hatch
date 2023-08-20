@@ -4,7 +4,7 @@ button:hover {
 
 .App {
   text-align: center;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 .App-header {
@@ -36,7 +36,7 @@ button:hover {
 }
 
 .app-header__title {
-  font-family: 'Mali', cursive;
+  font-family: "Mali", cursive;
   font-size: calc(1.5rem + 1.7vw);
 }
 
@@ -59,7 +59,7 @@ button:hover {
 .counter {
   font-size: 1.25rem;
   margin-top: 1rem;
-  font-family: 'Mali', cursive;
+  font-family: "Mali", cursive;
 }
 
 .timer {
