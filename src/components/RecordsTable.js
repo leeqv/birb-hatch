@@ -1,6 +1,6 @@
 import { getTimeString } from "./helpers";
-import { useState, useEffect } from "react";
-import { useTimeStore } from "../store";
+import { useEffect } from "react";
+import { useRecordStore } from "../store";
 
 function RecordsRow(props) {
   const medals = ["🥇", "🥈", "🥉"];
@@ -15,35 +15,7 @@ function RecordsRow(props) {
 }
 
 function RecordsTable() {
-  const time = useTimeStore((state) => state.time);
-
-  // eslint-disable-next-line
-  const [records, setRecords] = useState(() => {
-    const saved = localStorage.getItem("time");
-    var initialValue = JSON.parse(saved);
-
-    if (initialValue != null && !initialValue.includes(time)) {
-      initialValue = [...initialValue, time]
-        .sort((a, b) => a - b)
-        .filter((_, index) => index < 3);
-
-      initialValue = initialValue.map(function (el) {
-        return {
-          time: el,
-          new: el === time ? true : false,
-        };
-      });
-    } else {
-      initialValue = [
-        {
-          time: time,
-          new: true,
-        },
-      ];
-    }
-
-    return initialValue;
-  });
+  const records = useRecordStore((state) => state.records());
 
   useEffect(() => {
     var times = records.map((el) => el.time);

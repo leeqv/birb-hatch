@@ -16,4 +16,34 @@ const useTimeStore = create((set) => ({
   setRunning: (bool) => set(() => ({ running: bool })),
 }));
 
-export { useCountStore, useTimeStore };
+const useRecordStore = create(() => ({
+  records: () => {
+    const saved = localStorage.getItem("time");
+    var initialValue = JSON.parse(saved);
+    const time = useTimeStore.getState().time;
+
+    if (initialValue != null && !initialValue.includes(time)) {
+      initialValue = [...initialValue, time]
+        .sort((a, b) => a - b)
+        .filter((_, index) => index < 3);
+
+      initialValue = initialValue.map(function (el) {
+        return {
+          time: el,
+          new: el === time ? true : false,
+        };
+      });
+    } else {
+      initialValue = [
+        {
+          time: time,
+          new: true,
+        },
+      ];
+    }
+
+    return initialValue;
+  },
+}));
+
+export { useCountStore, useTimeStore, useRecordStore };

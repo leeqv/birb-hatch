@@ -22,6 +22,7 @@ module.exports = {
     "arrow-spacing": ["error", { before: true, after: true }],
     "react/prop-types": 0,
     "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "off",
     "prettier/prettier": [
       "error",
       {
