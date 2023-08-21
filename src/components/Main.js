@@ -1,14 +1,17 @@
-import { useState, useEffect } from "react";
-import RecordsTable from "./RecordsTable";
-import { getTimeString } from "./helpers";
+import { useEffect } from "react";
+import { useCountStore, useTimeStore } from "../store";
+import GameBox from "./GameBox";
+import EndGameBox from "./EndGameBox";
 
 function Main() {
   const pointsNeeded = 15;
+  const count = useCountStore((state) => state.count);
+  const running = useTimeStore((state) => state.running);
+  const time = useTimeStore((state) => state.time);
+  const offset = useTimeStore((state) => state.offset);
+  const setTime = useTimeStore((state) => state.setTime);
+  const setOffset = useTimeStore((state) => state.setOffset);
 
-  /** STOPWATCH */
-  const [time, setTime] = useState(0);
-  const [running, setRunning] = useState(false);
-  const [offset, setOffset] = useState();
   useEffect(() => {
     var interval;
     if (running) {
@@ -20,86 +23,22 @@ function Main() {
     }
 
     function update() {
-      setTime((time) => time + delta());
-    }
-    function delta() {
       var now = Date.now(),
-        d = now - offset;
+        delta = now - offset;
       setOffset(now);
-      return d;
+      setTime(time + delta);
     }
 
     return () => clearInterval(interval);
   }, [running, offset]);
 
-  /** COUNTER */
-  const [count, setCount] = useState(0);
-
-  function addPoints() {
-    setCount(() => count + 1);
-  }
-
-  function resetCounter() {
-    setCount(0);
-  }
-
-  /** BUTTON HANDLERS */
-  function handleResetBtn() {
-    resetCounter();
-    setTime(0);
-  }
-
-  function handleEggBtnClick() {
-    addPoints();
-    if (count === 0) {
-      setRunning(true);
-    }
-    if (count === pointsNeeded - 1) {
-      setRunning(false);
-    }
-  }
-
-  /** TEMPLATES */
-  const endGameTemplate = (
-    <>
-      <span className="content__egg-btn content__egg-btn--fin">🐣</span>
-      <p className="content__counter">
-        Good job! You helped birb hatch in {getTimeString(time)} 👏
-      </p>
-
-      <button
-        className="content__reset-btn btn btn-warning"
-        onClick={handleResetBtn}
-      >
-        hatch another egg
-      </button>
-
-      <RecordsTable time={time} />
-    </>
-  );
-
-  const startedGameTemplate = (
-    <>
-      <span className="content__counter">{count}</span>
-      <span className="timer">time elapsed: {time}</span>
-    </>
-  );
-
-  const inGameTemplate = (
-    <>
-      <button
-        onClick={handleEggBtnClick}
-        className="content__egg-btn btn btn-outline-warning"
-      >
-        🥚
-      </button>
-      {running ? startedGameTemplate : null}
-    </>
-  );
-
   return (
     <main className="content">
-      {count === pointsNeeded ? endGameTemplate : inGameTemplate}
+      {count === pointsNeeded ? (
+        <EndGameBox />
+      ) : (
+        <GameBox pointsNeeded={pointsNeeded} />
+      )}
     </main>
   );
 }
