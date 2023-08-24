@@ -1,4 +1,4 @@
-function getTimeString(ms) {
+function getTimeString(ms: number) {
   const dict = [
     {
       unit: "day",
@@ -13,11 +13,15 @@ function getTimeString(ms) {
       inSeconds: 3600,
     },
   ];
-  dict.sort((a, b) => b.inSeconds - a.inSeconds); // make sure dict is in descending order of inSeconds
 
-  var elapsedTime = {
+  // make sure dict is in descending order of inSeconds
+  dict.sort((a, b) => b.inSeconds - a.inSeconds);
+
+  const elapsedTime: Record<string, number> = {
     s: ms / 1000,
-  }; // later will update to something like { s: 0.01, min: 60 }
+  };
+  // later will update to something like { s: 0.01, min: 60 }
+
   dict.forEach((item) => {
     while (elapsedTime.s >= item.inSeconds) {
       elapsedTime.s = elapsedTime.s - item.inSeconds;
@@ -25,7 +29,7 @@ function getTimeString(ms) {
     }
   });
 
-  var timeString = "";
+  let timeString = "";
   dict.forEach((item) => {
     if (elapsedTime[item.unit] > 0)
       timeString += `${elapsedTime[item.unit]}${item.unit[0]} `;

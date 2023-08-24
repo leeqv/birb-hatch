@@ -1,6 +1,6 @@
 import { useCountStore, useTimeStore } from "../store";
 
-function GameBox({ pointsNeeded }) {
+function GameBox({ pointsNeeded }: { pointsNeeded: number }) {
   const count = useCountStore((state) => state.count);
   const time = useTimeStore((state) => state.time);
   const running = useTimeStore((state) => state.running);

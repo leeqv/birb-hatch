@@ -2,7 +2,13 @@ import { getTimeString } from "./helpers";
 import { useEffect } from "react";
 import { useRecordStore } from "../store";
 
-function RecordsRow(props) {
+interface RecordsRowProps {
+  index: number;
+  value: string;
+  new: boolean;
+}
+
+function RecordsRow(props: RecordsRowProps) {
   const medals = ["🥇", "🥈", "🥉"];
 
   return (
@@ -17,12 +23,17 @@ function RecordsRow(props) {
 function RecordsTable() {
   const records = useRecordStore((state) => state.records());
 
+  interface Record {
+    time: number;
+    new: boolean;
+  }
+
   useEffect(() => {
-    var times = records.map((el) => el.time);
+    const times = records.map((el: Record) => el.time);
     localStorage.setItem("time", JSON.stringify(times));
   }, [records]);
 
-  var recordsRows = records.map((record, index) => (
+  const recordsRows = records.map((record: Record, index: number) => (
     <RecordsRow
       key={index}
       value={getTimeString(record.time)}
@@ -35,7 +46,7 @@ function RecordsTable() {
     <table>
       <thead>
         <tr>
-          <th colSpan="2">Fastest hatch 🐤💨</th>
+          <th colSpan={2}>Fastest hatch 🐤💨</th>
         </tr>
       </thead>
       <tbody>{recordsRows}</tbody>

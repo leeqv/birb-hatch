@@ -13,17 +13,15 @@ function Main() {
   const setOffset = useTimeStore((state) => state.setOffset);
 
   useEffect(() => {
-    var interval;
+    const interval: ReturnType<typeof setTimeout> = setInterval(update, 100);
     if (running) {
       setOffset(Date.now());
-      interval = setInterval(update, 100);
     } else if (!running) {
       clearInterval(interval);
-      interval = null;
     }
 
     function update() {
-      var now = Date.now(),
+      const now = Date.now(),
         delta = now - offset;
       setOffset(now);
       setTime(time + delta);
